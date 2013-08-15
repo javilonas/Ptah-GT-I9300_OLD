@@ -181,5 +181,5 @@ obj-$(CONFIG_SND_SOC_TPA6130A2)	+= snd-soc-tpa6130a2.o
 obj-$(CONFIG_SND_SOC_WM2000)	+= snd-soc-wm2000.o
 obj-$(CONFIG_SND_SOC_WM9090)	+= snd-soc-wm9090.o
 
-# Rem Sound Engine
-obj-$(CONFIG_SND_REM)	+= rem_sound.o
+# Boeffla-Sound Engine
+obj-$(CONFIG_SND_BOEFFLA)	+= boeffla_sound.o
