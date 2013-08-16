@@ -32,6 +32,50 @@ echo '
                 label="Establecer en el arranque"/>
 
     </settingsPane>
+
+    <settingsPane description="CPU scaling" 
+                  name="CPU voltaje control">' >> $XML
+
+echo "
+      <spinner description=\"Establece la frecuencia máxima de la CPU. Por defecto: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq | rev | cut -c 4- | rev` MHz.\" 
+               name=\"CPU max frecuencia\" 
+               action=\"cpugeneric /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq\">" >> $XML
+
+while read FREQ UVOLT; do
+  echo "
+        <spinnerItem name=\"$FREQ MHz\" value=\"${FREQ}000\"/>" >> $XML
+done < /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
+
+
+echo "
+      </spinner>
+      <spinner description=\"Establece la frecuencia mínima de la CPU. Por defecto: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq | rev | cut -c 4- | rev` MHz.\" 
+               name=\"CPU min frecuencia\" 
+               action=\"cpugeneric /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq\">" >> $XML
+
+while read FREQ UVOLT; do
+  echo "
+        <spinnerItem name=\"$FREQ MHz\" value=\"${FREQ}000\"/>" >> $XML
+done < /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
+
+echo '
+      </spinner>
+    </settingsPane>
+
+    <settingsPane description="La disminución de tensión reducirá el consumo de energía de la CPU. El aumento en las frecuencias de overclocking mejora la estabilidad. Demasiado bajo voltaje puede causar inestabilidad y puede quedarse congelado (Colgado)." 
+                  name="CPU voltage control">' >> $XML
+
+while read FREQ UVOLT; do
+  echo "
+      <seekBar  description=\"Voltage por defecto: $UVOLTµV\" 
+	        name=\"${FREQ} MHz step\" 
+                action=\"cpuvolt ${FREQ}\"
+                unit=\"µV\" min=\"600000\" reversed=\"false\" step=\"25000\" max=\"1400000\"/>" >> $XML
+  CPUFREQLIST="$CPUFREQLIST $FREQ"
+done < /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
+
+echo '
+    </settingsPane>
   </settingsTab>
 
   <settingsTab name="Zzmoove">
@@ -52,7 +96,7 @@ echo "
     <settingsPane description=\"regular el escalado del voltaje de la frecuencia dinámica de la CPU.\" 
                   name=\"Zzmoove tuneables\">
 
-      <seekBar description=\"Normal: 100000, Batería: 180000, Equilibrado: 45000, Rendimiento: 40000.\" 
+      <seekBar description=\"MaxBatería: 18000, Batería: 180000, Normal: 100000, Equilibrado: 45000, Rendimiento: 40000.\" 
                name=\"Sampling rate\" 
                action=\"generic /sys/devices/system/cpu/cpufreq/zzmoove/sampling_rate\"
                unit=\"µS\" min=\"10000\" reversed=\"false\" step=\"1000\" max=\"180000\"/>
@@ -221,6 +265,93 @@ echo "
 " >> $XML
 
 echo '
+  </settingsTab>
+  <settingsTab name="Memoria/Interna">
+    <settingsPane description="Aplicar la configuración de arranque sólo si la que desea llega a ser estable, de lo contrario el equipo termina en un Bucle de reinicios o directamente no arrancará. Si se desactiva, los valores mostrados no corresponden a los valores reales actuales, los valores correctos de los perfiles están guardados." 
+                  name="MIF/INT voltage control switch">
+      <checkbox description="Si está activado, los ajustes siguientes se aplicarán en el arranque." 
+                name="Establecer voltajes del bus en el arranque" 
+                action="controlswitch BUS" 
+                label="Establecer en el arranque"/>
+    </settingsPane>
+
+    <settingsPane description="MIF/INT representa el interfaz de memoria SoCs y componentes internos."
+                  name="Mif/Int control">' >> $XML
+
+echo "
+      <seekBar description=\"El período de muestreo en la que el monitor DVFS toma la decisión. Por defecto: `cat /sys/devices/system/cpu/busfreq/sampling_rate`µS.\"
+               name=\"sampling_rate\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/sampling_rate\"
+               unit=\"µS\" min=\"10000\" reversed=\"false\" step=\"5000\" max=\"200000\"/>
+
+      <seekBar description=\"La Unidad de Supervisión del rendimiento de la plataforma (PPMU) recopila información de uso del bus a nivel de hardware de la CPU y los dos controladores de memoria (DMC). Por defecto: `cat /sys/devices/system/cpu/busfreq/load_history_size`.\"
+               name=\"Load history size\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/load_history_size\"
+               unit=\"samples\" min=\"1\" reversed=\"false\" step=\"1\" max=\"5\"/>
+
+      <seekBar description=\"El umbral máximo por encima del cual DMC se excede la carga media de los controladores de memoria en la última muestra, se establece el paso máximo de OPP. Por defecto: `cat /sys/devices/system/cpu/busfreq/dmc_max_threshold`.\"
+               name=\"DMC maximum threshold\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/dmc_max_threshold\"
+               unit=\"%\" min=\"1\" reversed=\"false\" step=\"1\" max=\"99\"/>
+
+      <seekBar description=\"El umbral de inactividad, que, si el controlador de memoria cae por debajo de ella, reduce el paso de OPP por un paso. Si la carga cae en activo entre el umbral de inactividad y el umbral máximo de DMC, el promedio DMC la carga sobre el tamaño de historia de carga son tomadas y se normaliza a la frecuencia máxima de OPP. Por defecto: `cat /sys/devices/system/cpu/busfreq/idle_threshold`.\"
+               name=\"Idle threshold\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/idle_threshold\"
+               unit=\"%\" min=\"1\" reversed=\"false\" step=\"1\" max=\"50\"/>
+
+      <seekBar description=\"El umbral del bus de CPU máximo por encima del cual se supera la carga del bus de la CPU sobre la última muestra, se establece el paso máximo de OPP. Por defecto: `cat /sys/devices/system/cpu/busfreq/max_cpu_threshold`.\"
+               name=\"Maximum CPU bus threshold\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/max_cpu_threshold\"
+               unit=\"%\" min=\"1\" reversed=\"false\" step=\"1\" max=\"99\"/>
+
+      <seekBar description=\"El bus de la CPU hasta el umbral, en realidad actúa como umbral delimitador de clases, si la carga excede up_threshold pero no supera el umbral máximo de la CPU, que toma en cuenta el tamaño de la carga de la CPU y baja un paso, si la condición pendiente no se cumple, la frecuencia del bus de la CPU se queda igual. Por defecto: `cat /sys/devices/system/cpu/busfreq/up_cpu_threshold`.\"
+               name=\"Up CPU threshold\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/up_cpu_threshold\"
+               unit=\"%\" min=\"1\" reversed=\"false\" step=\"1\" max=\"99\"/>
+
+      <seekBar description=\"CPU tamaño pendiente se define por la diferencia de carga de la muestra actual a la muestra anterior. Si la pendiente supera el valor establecido, la frecuencia del bus de CPU de destino se baja solo un paso. Por defecto: `cat /sys/devices/system/cpu/busfreq/cpu_slope_size`.\"
+               name=\"CPU slope size\" 
+               action=\"generictag BUS /sys/devices/system/cpu/busfreq/cpu_slope_size\"
+               unit=\"%\" min=\"1\" reversed=\"false\" step=\"1\" max=\"50\"/>
+
+" >> $XML
+
+echo  '
+    </settingsPane>
+    <settingsPane description="Modifica los Voltajes Internos del BUS"
+                  name="Internal voltage">'>> $XML
+
+while read FREQ VOLT; do
+  S_FREQ=`echo $FREQ | cut -c 4-`
+  evalcmd='eval echo \$INT_$S_FREQ'
+  if [ "a`eval $evalcmd`" == "a" ]; then
+    eval "INT_$S_FREQ=$VOLT"
+    echo "<seekBar  description=\"Default voltage: $VOLTµV\" 
+	          name=\"${S_FREQ} MHz step\" 
+                  action=\"intvolt ${S_FREQ}\"
+                  unit=\"µV\" min=\"600000\" reversed=\"false\" step=\"25000\" max=\"1150000\"/>" >> $XML
+  fi
+done < /sys/devices/system/cpu/busfreq/int_volt_table
+
+echo  '
+    </settingsPane>
+    <settingsPane description="Modifica los Voltajes de la Memoria del BUS"
+                  name="Memory voltage">'>> $XML
+
+while read FREQ VOLT; do
+  S_FREQ=`echo $FREQ | cut -c 1-3`
+  evalcmd='eval echo \$MIF_$S_FREQ'
+  if [ "a`eval $evalcmd`" == "a" ]; then
+    eval "MIF_$S_FREQ=$VOLT"
+    echo "<seekBar  description=\"Default voltage: $VOLTµV\" 
+	          name=\"${S_FREQ} MHz step\" 
+                  action=\"mifvolt ${S_FREQ}\"
+                  unit=\"µV\" min=\"750000\" reversed=\"false\" step=\"25000\" max=\"1100000\"/>" >> $XML
+  fi
+done < /sys/devices/system/cpu/busfreq/mif_volt_table
+
+echo '
+    </settingsPane>
   </settingsTab>
   <settingsTab name="Cargador">
     <settingsPane description="Interfaz desde donde podrá seleccionar entre varios perfiles de carga AC/USB, dependiendo del que seleccione la batería cargará mas lento o mas rápido."  
