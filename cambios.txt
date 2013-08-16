@@ -1,9 +1,26 @@
 Kernel Ptah 0.1
 
 ------------------------------------------------
-Cambios realizados a día 15/08/2013
+Cambios realizados a día 16/08/2013
 
-Versión Inicial 0.1 (Basada en Lonas_KL)
+Versión Inicial 0.1 (Basada en Lonas_KL 5.1)
+Sustituido Rem por Boeffla Sound
+cpuidle: Change state properties
+zram: Consider low pages in the lowmemorykiller
+cpufreq: Añadido voltage control interfaces
+cpufreq: movido level end definition y otros ajustes
+busfreq: Memory & internal voltage control
+busfreq: eliminado código no utilizado
+busfreq: añadido int_volt table faltante
+cpufreq-exynos: Make the voltage interfaces step dynamic
+declarando function find_device_opp
+flexrate: Double the flex period
+block: deadline: hardcode magic values from the usual suspects.
+bcmdhd: neuter net_os_rxfilter_add_remove
+fs/buffer.c: do not inline exported function
+busfreq: Activado de nuevo 400266 OPP
+mach-midas: tmu modifications. increase some throttling thresholds
+Ramdisk I9300XXEMF6 (Compatibilidad Bases anteriores)
 -------------------------------------------------- 
 
 
