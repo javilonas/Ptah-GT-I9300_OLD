@@ -133,11 +133,11 @@ unsigned int Boeffla_sound_hook_wm8994_write(unsigned int reg, unsigned int valu
 // headphone levels
 #define HEADPHONE_DEFAULT 	59 /* 50 era el valor original por defecto */
 
-#define HEADPHONE_MAX 		63
+#define SPEAKER_DEFAULT 	61 /* 57 era el valor original por defecto */
 #define HEADPHONE_MIN 		20
 
 // speaker levels
-#define SPEAKER_DEFAULT 	61 /* 57 era el valor original por defecto */
+#define SPEAKER_DEFAULT 	57
 
 #define SPEAKER_MAX 		63
 #define SPEAKER_MIN 		57
