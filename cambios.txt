@@ -1,4 +1,4 @@
-Kernel Ptah 0.1
+Kernel Ptah 0.1 RC2
 
 ------------------------------------------------
 Cambios realizados a día 16/08/2013
@@ -21,6 +21,7 @@ fs/buffer.c: do not inline exported function
 busfreq: Activado de nuevo 400266 OPP
 mach-midas: tmu modifications. increase some throttling thresholds
 Ramdisk I9300XXEMF6 (Compatibilidad Bases anteriores)
+Actualizado Boeffla Sound
 -------------------------------------------------- 
 
 
