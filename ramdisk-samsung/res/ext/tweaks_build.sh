@@ -10,6 +10,7 @@
 /sbin/busybox setprop debug.performance.tuning 1
 /sbin/busybox setprop video.accelerate.hw 1
 /sbin/busybox setprop debug.sf.hw 1
+/sbin/busybox setprop windowsmgr.max_events_per_sec 100
 
 # Incremento de memoria ram
 /sbin/busybox setprop dalvik.vm.heapsize 148m

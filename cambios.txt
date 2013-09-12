@@ -1,27 +1,16 @@
-Kernel Ptah 0.1 RC2
+Kernel Ptah 0.2 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 16/08/2013
+Cambios realizados a día 12/09/2013
 
-Versión Inicial 0.1 (Basada en Lonas_KL 5.1)
-Sustituido Rem por Boeffla Sound
-cpuidle: Change state properties
-zram: Consider low pages in the lowmemorykiller
-cpufreq: Añadido voltage control interfaces
-cpufreq: movido level end definition y otros ajustes
-busfreq: Memory & internal voltage control
-busfreq: eliminado código no utilizado
-busfreq: añadido int_volt table faltante
-cpufreq-exynos: Make the voltage interfaces step dynamic
-declarando function find_device_opp
-flexrate: Double the flex period
-block: deadline: hardcode magic values from the usual suspects.
-bcmdhd: neuter net_os_rxfilter_add_remove
-fs/buffer.c: do not inline exported function
-busfreq: Activado de nuevo 400266 OPP
-mach-midas: tmu modifications. increase some throttling thresholds
-Ramdisk I9300XXEMF6 (Compatibilidad Bases anteriores)
-Actualizado Boeffla Sound
+Añadido nuevo tweak mmap_min_addr a 16384
+Añadido nuevo tweak overcommit_ratio a 950
+Añadido nuevo tweak overcommit_memory a 1
+Añadido nuevo tweak min_free_order_shift a 4
+Añadido nuevo tweak windowsmgr.max_events_per_sec a 100
+Modificados tweaks sched_latency_ns, sched_min_granularity_ns y sched_wakeup_granularity_ns
+Modificado tweak slice_idle a 3
+Añadido nuevo tweak back_seek_max
 -------------------------------------------------- 
 
 

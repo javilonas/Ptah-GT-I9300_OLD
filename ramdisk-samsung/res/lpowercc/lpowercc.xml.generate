@@ -70,7 +70,7 @@ while read FREQ UVOLT; do
       <seekBar  description=\"Voltage por defecto: $UVOLTµV\" 
 	        name=\"${FREQ} MHz step\" 
                 action=\"cpuvolt ${FREQ}\"
-                unit=\"µV\" min=\"600000\" reversed=\"false\" step=\"25000\" max=\"1400000\"/>" >> $XML
+                unit=\"µV\" min=\"600000\" reversed=\"false\" step=\"12500\" max=\"1500000\"/>" >> $XML
   CPUFREQLIST="$CPUFREQLIST $FREQ"
 done < /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
 
@@ -329,7 +329,7 @@ while read FREQ VOLT; do
     echo "<seekBar  description=\"Default voltage: $VOLTµV\" 
 	          name=\"${S_FREQ} MHz step\" 
                   action=\"intvolt ${S_FREQ}\"
-                  unit=\"µV\" min=\"600000\" reversed=\"false\" step=\"25000\" max=\"1150000\"/>" >> $XML
+                  unit=\"µV\" min=\"600000\" reversed=\"false\" step=\"12500\" max=\"1150000\"/>" >> $XML
   fi
 done < /sys/devices/system/cpu/busfreq/int_volt_table
 
@@ -352,6 +352,77 @@ done < /sys/devices/system/cpu/busfreq/mif_volt_table
 
 echo '
     </settingsPane>
+  </settingsTab>
+  <settingsTab name="GPU">
+
+    <settingsPane description="Aplicar la configuración de arranque sólo si la que desea llega a ser estable, de lo contrario el equipo termina en un Bucle de reinicios o directamente no arrancará. Si se desactiva, los valores mostrados no corresponden a los valores reales actuales, los valores correctos de los perfiles están guardados" 
+                  name="GPU control switch">
+      <checkbox description="Si está activado, los ajustes siguientes se aplicarán en el arranque." 
+                name="Establecer voltajes de la GPU en el arranque" 
+                action="controlswitch GPU" 
+                label="Establecer en el arranque"/>
+    </settingsPane>' >> $XML
+
+echo "
+    <settingsPane description=\"Al editar los siguientes ajustes, podrá cambiar completamente el comportamiento y el rendimiento de la GPU.\" 
+                  name=\"GPU scaling settings\">
+
+      <spinner description=\"Establece la frecuencia máxima de las escalas GPU. Por defecto: `cat /sys/devices/system/gpu/max_freq`MHz.\" 
+               name=\"GPU max frequency\" 
+               action=\"gpugeneric /sys/devices/system/gpu/max_freq\">" >> $XML
+
+while read FREQ; do
+  echo "<spinnerItem name=\"$FREQ MHz\" value=\"$FREQ\"/>" >> $XML
+done < /sys/devices/system/gpu/freq_table
+
+echo "
+      </spinner>
+      <spinner description=\"Establece la frecuencia mínima de las escalas GPU. Por defecto: `cat /sys/devices/system/gpu/min_freq`MHz.\" 
+               name=\"GPU min frequency\" 
+               action=\"gpugeneric /sys/devices/system/gpu/min_freq\">" >> $XML
+
+while read FREQ; do
+  echo "
+        <spinnerItem name=\"$FREQ MHz\" value=\"$FREQ\"/>" >> $XML
+done < /sys/devices/system/gpu/freq_table
+
+echo '
+      </spinner>' >> $XML
+
+read trash1 UP trash2 DIFF < /sys/devices/system/gpu/thresholds
+
+echo "
+     <seekBar  description=\"Si la carga en el último período de muestreo superó el porcentaje umbral establecido, la CPU salta al siguiente paso de frecuencia más alta. Por defecto: ${UP}%.\" 
+               name=\"Up threshold\" 
+               action=\"gputhresholds UP\" 
+               unit=\"%\" min=\"30\" reversed=\"false\" step=\"1\" max=\"99\"/>" >> $XML
+
+echo "
+     <seekBar  description=\"Si la carga cae por debajo (up threshold - down differential), la GPU reduce dinámicamente su reloj abajo a un paso de frecuencia. El diferencial de bajada no puede ser superior a (99 - up threshold). Por defecto: ${DIFF}%.\"
+               name=\"Down differential\" 
+               action=\"gputhresholds DIFF\" 
+               unit=\"%\" min=\"1\" reversed=\"false\" step=\"1\" max=\"50\"/>" >> $XML
+
+echo "
+     <seekBar  description=\"Tiempor de espera entre la lógica DVFS de la utilización GPU. Por defecto: `cat /sys/devices/system/gpu/utilization_timeout`.\"
+               name=\"Utilization timeout\" 
+               action=\"gpugeneric /sys/devices/system/gpu/utilization_timeout\" 
+               unit=\"ms\" min=\"25\" reversed=\"false\" step=\"25\" max=\"1000\"/>" >> $XML
+
+echo '
+    </settingsPane>
+    <settingsPane description="" name="GPU voltage control">' >> $XML
+
+while read FREQ VOLT; do
+  echo "<seekBar  description=\"Default voltage: $VOLT\" 
+	          name=\"${FREQ%???} MHz step\" 
+                  action=\"gpuvolt ${FREQ%???}\"
+                  unit=\" mV\" min=\"600\" reversed=\"false\" step=\"25\" max=\"1300\"/>" >> $XML
+done < /sys/devices/system/gpu/volt_table
+
+echo '
+    </settingsPane>' >> $XML
+echo '
   </settingsTab>
   <settingsTab name="Cargador">
     <settingsPane description="Interfaz desde donde podrá seleccionar entre varios perfiles de carga AC/USB, dependiendo del que seleccione la batería cargará mas lento o mas rápido."  
@@ -423,9 +494,9 @@ echo '
     </settingsPane>
 
     <settingsPane name="ZRAM" 
-                  description=" ">
+                  description="Desde aquí podrá aumentar o disminuir el tamaño de Zram">
 
-      <seekBar  description="Desde aquí podrá aumentar o disminuir el tamaño de Zram" 
+      <seekBar  description="Por defecto: 400 mB." 
                 name="ZRAM" 
                 action="zram"
                 unit="mB" min="0" reversed="false" step="8" max="2048"/>      
