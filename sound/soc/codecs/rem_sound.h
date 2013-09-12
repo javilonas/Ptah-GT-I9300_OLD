@@ -1,7 +1,16 @@
 /*
- * Author: andip71, 26.02.2013
+ * Author Rem Sound: javilonas, 28.06.2013
  *
- * Version 1.6.0
+ * Version 0.8
+ *
+ * Based on the source of Boeffla sound created by andip71
+ * Código fuente orginal del Motor de sonido: https://github.com/andip71/boeffla-kernel-jb-u7-s3/tree/master/sound/soc/codecs
+ *
+ * Modificado por Javilonas y adaptado al Kernel REM el 25-02-2013
+ * credits: andip71 and Supercurio for ideas and partially code from his Voodoo and boeffla sound
+ * 	    sound implementation,
+ *          Yank555 for great support on problem analysis,
+ *          Gokhanmoral for further modifications to the original code
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -19,17 +28,17 @@
 // External function declarations
 /*****************************************/
 
-void Boeffla_sound_hook_wm8994_pcm_probe(struct snd_soc_codec *codec_pointer);
-unsigned int Boeffla_sound_hook_wm8994_write(unsigned int reg, unsigned int value);
+void Rem_sound_hook_wm8994_pcm_probe(struct snd_soc_codec *codec_pointer);
+unsigned int Rem_sound_hook_wm8994_write(unsigned int reg, unsigned int value);
 
 
 /*****************************************/
 // Definitions
 /*****************************************/
 
-// Boeffla sound general
-#define BOEFFLA_SOUND_DEFAULT 	0
-#define BOEFFLA_SOUND_VERSION 	"1.6.0"
+// Rem sound general
+#define REM_SOUND_DEFAULT 	0
+#define REM_SOUND_VERSION 	"0.8"
 
 // Debug mode
 #define DEBUG_DEFAULT 		0
