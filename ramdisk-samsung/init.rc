@@ -595,8 +595,8 @@ on boot
     chmod 0664 /sys/block/zram0/disksize
     chown system system /sys/block/zram0/disksize
 #   write /sys/block/zram0/disksize 209715200
-    write /sys/block/zram0/disksize 419430400
-#   write /sys/block/zram0/disksize 512040000
+#   write /sys/block/zram0/disksize 419430400
+    write /sys/block/zram0/disksize 512040000
     chmod 0664 /sys/block/zram0/initstate
     chown system system /sys/block/zram0/initstate
 
