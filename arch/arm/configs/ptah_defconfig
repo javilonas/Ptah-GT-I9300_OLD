@@ -37,7 +37,7 @@ CONFIG_HAVE_IRQ_WORK=y
 #
 CONFIG_EXPERIMENTAL=y
 CONFIG_INIT_ENV_ARG_LIMIT=32
-CONFIG_CROSS_COMPILE=""
+CONFIG_CROSS_COMPILE="/home/lonas/Kernel_Lonas/toolchains/gcc-linaro-arm-linux-gnueabihf-4.8-2013.07-1_linux/bin/arm-linux-gnueabihf-"
 CONFIG_LOCALVERSION="-Ptah-0.2"
 # CONFIG_LOCALVERSION_AUTO is not set
 CONFIG_HAVE_KERNEL_GZIP=y
