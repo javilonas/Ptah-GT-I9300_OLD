@@ -3,6 +3,9 @@ Kernel Ptah 0.2 RTM1
 ------------------------------------------------
 Cambios realizados a día 12/09/2013
 
+Actualizado a Linux 3.095
+Actualizado ZZmoove a Versión 0.7d
+Eliminado Boeffla SOUND Y Añadido REM SOUND
 Añadido nuevo tweak mmap_min_addr a 16384
 Añadido nuevo tweak overcommit_ratio a 950
 Añadido nuevo tweak overcommit_memory a 1
@@ -11,6 +14,11 @@ Añadido nuevo tweak windowsmgr.max_events_per_sec a 100
 Modificados tweaks sched_latency_ns, sched_min_granularity_ns y sched_wakeup_granularity_ns
 Modificado tweak slice_idle a 3
 Añadido nuevo tweak back_seek_max
+arch/arm/mm/cache-l2x0.c: Fix correspondiente a linux 3.0.92
+mmc-core: Aumentado timeout limit_us a 1500000
+SAMSUNG OSRC exFAT File System support v1.2.4
+Update ROOT (Binario y apk)
+Aumentado ZRAM a 512 MB por defecto
 -------------------------------------------------- 
 
 
