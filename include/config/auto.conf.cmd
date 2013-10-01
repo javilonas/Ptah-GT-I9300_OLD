@@ -58,6 +58,7 @@ deps_config := \
 	fs/sysfs/Kconfig \
 	fs/proc/Kconfig \
 	fs/ntfs/Kconfig \
+	fs/exfat/Kconfig \
 	fs/fat/Kconfig \
 	fs/udf/Kconfig \
 	fs/isofs/Kconfig \
@@ -745,7 +746,7 @@ deps_config := \
 include/config/auto.conf: \
 	$(deps_config)
 
-ifneq "$(KERNELVERSION)" "3.0.91"
+ifneq "$(KERNELVERSION)" "3.0.95"
 include/config/auto.conf: FORCE
 endif
 ifneq "$(ARCH)" "arm"
