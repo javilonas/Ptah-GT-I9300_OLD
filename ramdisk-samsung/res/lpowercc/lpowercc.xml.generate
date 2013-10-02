@@ -96,7 +96,7 @@ echo "
     <settingsPane description=\"regular el escalado del voltaje de la frecuencia dinámica de la CPU.\" 
                   name=\"Zzmoove tuneables\">
 
-      <seekBar description=\"MaxBatería: 18000, Batería: 180000, Normal: 100000, Equilibrado: 45000, Rendimiento: 40000.\" 
+      <seekBar description=\"MaxBatería: 180000, Batería: 180000, Normal: 100000, Equilibrado: 45000, Rendimiento: 40000.\" 
                name=\"Sampling rate\" 
                action=\"generic /sys/devices/system/cpu/cpufreq/zzmoove/sampling_rate\"
                unit=\"µS\" min=\"10000\" reversed=\"false\" step=\"1000\" max=\"180000\"/>

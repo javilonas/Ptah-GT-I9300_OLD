@@ -9,7 +9,7 @@ if [[ ! -z $3 ]]; then
   eval $evalcmd
 fi
 
-zzmoove_predef="1"
+zzmoove_predef="2"
 zzmoove_find=`grep "zzmoove_predef" $DEFAULT_PROFILE | cut -d'=' -f2`
 
 write_value() {  
