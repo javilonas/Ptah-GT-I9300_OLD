@@ -10,9 +10,9 @@ sleep 1
 echo "0" > /proc/sys/vm/drop_caches
 
 # Tweak kernel scheduler, less aggressive settings
-echo "18000000" > /proc/sys/kernel/sched_latency_ns
-echo "3000000" > /proc/sys/kernel/sched_wakeup_granularity_ns
-echo "1500000" > /proc/sys/kernel/sched_min_granularity_ns
+echo "1000000" > /proc/sys/kernel/sched_latency_ns
+echo "100000" > /proc/sys/kernel/sched_wakeup_granularity_ns
+echo "500000" > /proc/sys/kernel/sched_min_granularity_ns
 
 # Miscellaneous tweaks
 echo "0" > /proc/sys/vm/block_dump
@@ -24,12 +24,6 @@ echo "64000" > /proc/sys/kernel/msgmni
 echo "64000" > /proc/sys/kernel/msgmax
 echo "500,512000,64,2048" > /proc/sys/kernel/sem
 echo "1" > /proc/sys/vm/oom_kill_allocating_task
-
-# Memory tweaks
-echo "16384" > /proc/sys/vm/mmap_min_addr
-echo "950" > /proc/sys/vm/overcommit_ratio
-echo "1" > /proc/sys/vm/overcommit_memory
-echo "4" > /proc/sys/vm/min_free_order_shift
  
 # Tweaks internos
 echo "2" > /sys/devices/system/cpu/sched_mc_power_savings
@@ -70,8 +64,7 @@ echo "0" > $i/queue/rotational
 echo "8192" > $i/queue/nr_requests
 echo "0" > $i/queue/iostats
 echo "1" > $i/queue/iosched/back_seek_penalty
-echo "1000000000" > $i/queue/iosched/back_seek_max
-echo "3" > $i/queue/iosched/slice_idle
+echo "2" > $i/queue/iosched/slice_idle
 echo "1" > $i/queue/iosched/low_latency
 
 done
