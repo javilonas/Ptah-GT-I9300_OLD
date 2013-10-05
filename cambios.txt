@@ -1,27 +1,15 @@
-Kernel Ptah 0.2 RTM1
+Kernel Ptah 0.4 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 12/09/2013
+Cambios realizados a día 05/10/2013
 
-Actualizado a Linux 3.095
-Actualizado ZZmoove a Versión 0.7d
-Eliminado Boeffla SOUND Y Añadido REM SOUND
-Añadido nuevo tweak mmap_min_addr a 16384
-Añadido nuevo tweak overcommit_ratio a 950
-Añadido nuevo tweak overcommit_memory a 1
-Añadido nuevo tweak min_free_order_shift a 4
-Añadido nuevo tweak windowsmgr.max_events_per_sec a 100
-Modificados tweaks sched_latency_ns, sched_min_granularity_ns y sched_wakeup_granularity_ns
-Modificado tweak slice_idle a 3
-Añadido nuevo tweak back_seek_max
-arch/arm/mm/cache-l2x0.c: Fix correspondiente a linux 3.0.92
-mmc-core: Aumentado timeout limit_us a 1500000
-SAMSUNG OSRC exFAT File System support v1.2.4
-Update ROOT (Binario y apk)
-Aumentado ZRAM a 512 MB por defecto
-ARM: 7670/1 & ARM: 7668/1 (Fix Memset)
-improve the performance of memcpy and memmove of the general version
+Zram disminuido a 200 MB por Defecto (4 x 200)
+Modificados Perfiles ZZmoove (Mejorar fluidez y ahorro)
+Aumentado min_free_kbytes a 8192 por defecto
+Aumentado vfs_cache_pressure a 50 (Mejorar Fluidez)
+Aumentado dirty_background_ratio a 10
+Disminuido dirty_writeback_centisecs a 1500 (1,5 segundos)
+Disminuido dirty_expire_centisecs a 500
+Añadidos de nuevo los tweaks eliminados en 0.3 (mejor optimizados)
 -------------------------------------------------- 
-
-
 
