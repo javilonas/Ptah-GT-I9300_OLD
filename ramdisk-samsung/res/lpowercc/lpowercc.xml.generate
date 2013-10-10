@@ -496,7 +496,7 @@ echo '
     <settingsPane name="ZRAM" 
                   description="Desde aquí podrá aumentar o disminuir el tamaño de Zram">
 
-      <seekBar  description="Por defecto: 200 mB." 
+      <seekBar  description="Por defecto: 100 mB." 
                 name="ZRAM" 
                 action="zram"
                 unit="mB" min="0" reversed="false" step="100" max="600"/>      
