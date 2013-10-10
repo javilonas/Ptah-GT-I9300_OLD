@@ -1,19 +1,20 @@
 Kernel Ptah 0.5 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 10/10/2013
+Cambios realizados a día 11/10/2013
 
 Actualizado a Linux 3.0.99
 Zram: Sustituido XZ por LZO (Compresión)
 Sustituido TCP_CONG Cubic por Westwood
 Añadidos patch CONFIG_BCMDHD (se eliminaron en update11) (Wifi)
 Desactivado CONFIG_LCD_FREQ_SWITCH_ACCOUNTING
-Optimizado perfil Maxbatería ZZmoove (Mejor escalada en freq y menos lag)
+Optimizado perfiles Maxbatería y Batería ZZmoove (Mejor escalada en freq y menos lag)
 block: re-use existing 'reading' variable instead of checking direction again
 block: fix blk_queue_end_tag()
 block: make register_disk() static
 mm: remove compressed copy from zram in-memory
 mm: make swapin readahead skip over holes
 swap: allow swap readahead to be merged
+Aumentado el Swappiness al 80%
 -------------------------------------------------- 
 
