@@ -118,7 +118,7 @@ write_values(){
 case "$zzpredef" in
   0)
     # MAX BATERÍA
-    sampling_rate="180000"
+    sampling_rate="160000"
     sampling_rate_sleep_multiplier="4"
     sampling_down_factor="1"
     sampling_down_max_momentum="0"
@@ -137,7 +137,7 @@ case "$zzpredef" in
     down_threshold_hotplug3="70"
     disable_hotplug="0"
     hotplug_sleep="1"
-    freq_step="15"
+    freq_step="10"
     freq_step_sleep="1"
     freq_limit="0"
     freq_limit_sleep="600000"
