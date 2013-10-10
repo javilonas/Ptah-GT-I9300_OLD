@@ -1,15 +1,19 @@
-Kernel Ptah 0.4 RTM1
+Kernel Ptah 0.5 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 05/10/2013
+Cambios realizados a día 10/10/2013
 
-Zram disminuido a 200 MB por Defecto (4 x 200)
-Modificados Perfiles ZZmoove (Mejorar fluidez y ahorro)
-Aumentado min_free_kbytes a 8192 por defecto
-Aumentado vfs_cache_pressure a 50 (Mejorar Fluidez)
-Aumentado dirty_background_ratio a 10
-Disminuido dirty_writeback_centisecs a 1500 (1,5 segundos)
-Disminuido dirty_expire_centisecs a 500
-Añadidos de nuevo los tweaks eliminados en 0.3 (mejor optimizados)
+Actualizado a Linux 3.0.99
+Zram: Sustituido XZ por LZO (Compresión)
+Sustituido TCP_CONG Cubic por Westwood
+Añadidos patch CONFIG_BCMDHD (se eliminaron en update11) (Wifi)
+Desactivado CONFIG_LCD_FREQ_SWITCH_ACCOUNTING
+Optimizado perfil Maxbatería ZZmoove (Mejor escalada en freq y menos lag)
+block: re-use existing 'reading' variable instead of checking direction again
+block: fix blk_queue_end_tag()
+block: make register_disk() static
+mm: remove compressed copy from zram in-memory
+mm: make swapin readahead skip over holes
+swap: allow swap readahead to be merged
 -------------------------------------------------- 
 
