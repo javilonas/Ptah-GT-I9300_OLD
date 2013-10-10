@@ -3616,6 +3616,7 @@
 0xb8bddf33	ip6t_ext_hdr	vmlinux	EXPORT_SYMBOL
 0x9addbaa6	neigh_destroy	vmlinux	EXPORT_SYMBOL
 0xa1ead7b8	netdev_warn	vmlinux	EXPORT_SYMBOL
+0xaa922fb1	hid_validate_values	vmlinux	EXPORT_SYMBOL_GPL
 0x2b820fe5	mmc_wait_for_app_cmd	vmlinux	EXPORT_SYMBOL
 0xf90e2f85	v4l2_fh_del	vmlinux	EXPORT_SYMBOL_GPL
 0xcefcd99a	serial8250_unregister_port	vmlinux	EXPORT_SYMBOL
