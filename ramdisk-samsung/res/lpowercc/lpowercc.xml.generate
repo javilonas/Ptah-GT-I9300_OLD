@@ -96,7 +96,7 @@ echo "
     <settingsPane description=\"regular el escalado del voltaje de la frecuencia dinámica de la CPU.\" 
                   name=\"Zzmoove tuneables\">
 
-      <seekBar description=\"MaxBatería: 180000, Batería: 180000, Normal: 100000, Equilibrado: 45000, Rendimiento: 40000.\" 
+      <seekBar description=\"MaxBatería: 120000, Batería: 100000, Normal: 95000, Equilibrado: 45000, Rendimiento: 40000.\" 
                name=\"Sampling rate\" 
                action=\"generic /sys/devices/system/cpu/cpufreq/zzmoove/sampling_rate\"
                unit=\"µS\" min=\"10000\" reversed=\"false\" step=\"1000\" max=\"180000\"/>
@@ -506,7 +506,7 @@ echo '
     <settingsPane name="Swappiness" 
                   description="Un valor bajo significa que el kernel va a tratar de evitar el intercambio tanto como sea posible, por contra en un valor más alto intentará de usar el espacio de intercambio de un modo mas agresivo, en resumen: al bajar su valor, le indicamos que use mas caché y menos swap y al subirlo le estamos indicamos al sistema, que use menos Swap y mas caché y memoria RAM.">   
 
-      <seekBar  description="Por defecto: 70." 
+      <seekBar  description="Por defecto: 80." 
                 name="Virtual machine swappiness" 
                 action="generic /proc/sys/vm/swappiness"
                 unit="%" min="0" reversed="false" step="5" max="100"/>
