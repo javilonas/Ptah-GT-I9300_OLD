@@ -955,8 +955,8 @@ static void __exit zram_exit(void)
 
 		get_disk(zram->disk);
 		destroy_device(zram);
-		if (zram->init_done)
-			zram_reset_device(zram);
+	if (zram->init_done)
+		zram_reset_device(zram);
 		put_disk(zram->disk);
 	}
 
