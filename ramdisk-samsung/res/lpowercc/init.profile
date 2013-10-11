@@ -1,8 +1,8 @@
 scaling_governor=zzmoove
 internal_iosched=row
 sd_iosched=row
-internal_read_ahead_kb=512
-sd_read_ahead_kb=1024
+internal_read_ahead_kb=1024
+sd_read_ahead_kb=2048
 max_freq=440
 min_freq=160
 logger_mode=off
