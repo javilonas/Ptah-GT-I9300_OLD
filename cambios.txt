@@ -5,11 +5,11 @@ Cambios realizados a día 11/10/2013
 
 Zram a 100 MB por defecto (100 x 4 = 400 Mb)
 zram: fix warning of print format
-zram: __zram_reset_device() can be static
 Staging: Fixes string split across lines in zram
 Corrección en zran_drv.c
 Use zram->lock to protect zram_free_page() in swap free notify patch
 zram: destroy all devices on error recovery path in zram_init()
 staging: zram: Add auto loading of module if user opens /dev/zram.
+Eliminados algunos debug (Testeando) en la configuración del Kernel
 -------------------------------------------------- 
 
