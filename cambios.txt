@@ -1,10 +1,15 @@
-Kernel Ptah 0.7 RTM1
+Kernel Ptah 0.8 RTM1
 
 ------------------------------------------------
 Cambios realizados a día 11/10/2013
 
-Revert "Eliminados algunos debug (Testeando)"
-Desactivado touchboost por defecto
-Revert "Desactivado CONFIG_LCD_FREQ_SWITCH_ACCOUNTING"
+Revert "Desactivado touchboost por defecto"
+Revert "staging: zram: Add auto loading of module if user opens /dev/zram."
+Revert "zram: destroy all devices on error recovery path in zram_init()" 
+Revert "Use zram->lock to protect zram_free_page() in swap free notify patch"
+Revert "Staging: Fixes string split across lines in zram"
+Revert "zram: fix warning of print format"
+Aumentado page-cluster
+Aumentado read_ahead Interno y Externo
 -------------------------------------------------- 
 
