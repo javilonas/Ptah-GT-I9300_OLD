@@ -9,7 +9,7 @@ Revert "zram: destroy all devices on error recovery path in zram_init()"
 Revert "Use zram->lock to protect zram_free_page() in swap free notify patch"
 Revert "Staging: Fixes string split across lines in zram"
 Revert "zram: fix warning of print format"
-Aumentado page-cluster
+Tweaks sustituidos por los del Lonas_KL
 Aumentado read_ahead Interno y Externo
 -------------------------------------------------- 
 
