@@ -499,8 +499,8 @@ static int zram_bvec_write(struct zram *zram, struct bio_vec *bvec, u32 index,
 	if (xv_malloc(zram->mem_pool, clen + sizeof(*zheader),
 		      &zram->table[index].page, &store_offset,
 		      GFP_NOIO | __GFP_HIGHMEM)) {
-		pr_info("Error allocating memory for compressed page: %u, size=%zu\n",
-			index, clen);
+		pr_info("Error allocating memory for compressed "
+			"page: %u, size=%zu\n", index, clen);
 		ret = -ENOMEM;
 		goto out;
 	}
