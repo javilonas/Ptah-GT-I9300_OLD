@@ -1,20 +1,15 @@
-Kernel Ptah 0.5 RTM1
+Kernel Ptah 0.6 RTM1
 
 ------------------------------------------------
 Cambios realizados a día 11/10/2013
 
-Actualizado a Linux 3.0.99
-Zram: Sustituido XZ por LZO (Compresión)
-Sustituido TCP_CONG Cubic por Westwood
-Añadidos patch CONFIG_BCMDHD (se eliminaron en update11) (Wifi)
-Desactivado CONFIG_LCD_FREQ_SWITCH_ACCOUNTING
-Optimizado perfiles Maxbatería y Batería ZZmoove (Mejor escalada en freq y menos lag)
-block: re-use existing 'reading' variable instead of checking direction again
-block: fix blk_queue_end_tag()
-block: make register_disk() static
-mm: remove compressed copy from zram in-memory
-mm: make swapin readahead skip over holes
-swap: allow swap readahead to be merged
-Aumentado el Swappiness al 80%
+Zram a 100 MB por defecto (100 x 4 = 400 Mb)
+zram: fix warning of print format
+zram: __zram_reset_device() can be static
+Staging: Fixes string split across lines in zram
+Corrección en zran_drv.c
+Use zram->lock to protect zram_free_page() in swap free notify patch
+zram: destroy all devices on error recovery path in zram_init()
+staging: zram: Add auto loading of module if user opens /dev/zram.
 -------------------------------------------------- 
 
