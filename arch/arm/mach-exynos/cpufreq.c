@@ -847,7 +847,7 @@ err_vdd_arm:
 }
 late_initcall(exynos_cpufreq_init);
 
-ssize_t show_UV_uV_table(struct cpufreq_policy *policy, char *buf) {
+ssize_t show_LP_uV_table(struct cpufreq_policy *policy, char *buf) {
 	int i, len = 0;
 	if (buf)
 	{
@@ -862,7 +862,7 @@ ssize_t show_UV_uV_table(struct cpufreq_policy *policy, char *buf) {
 	return len;
 }
 
-ssize_t show_UV_mV_table(struct cpufreq_policy *policy, char *buf) {
+ssize_t show_LP_mV_table(struct cpufreq_policy *policy, char *buf) {
 	int i, len = 0;
 	if (buf)
 	{
@@ -877,7 +877,7 @@ ssize_t show_UV_mV_table(struct cpufreq_policy *policy, char *buf) {
 	return len;
 }
 
-ssize_t store_UV_uV_table(struct cpufreq_policy *policy, 
+ssize_t store_LP_uV_table(struct cpufreq_policy *policy, 
 				 const char *buf, size_t count) {
 
 	int i, tokens, top_offset, invalid_offset;
@@ -908,7 +908,7 @@ ssize_t store_UV_uV_table(struct cpufreq_policy *policy,
 	return count;
 }		
 
-ssize_t store_UV_mV_table(struct cpufreq_policy *policy, 
+ssize_t store_LP_mV_table(struct cpufreq_policy *policy, 
 				 const char *buf, size_t count) {
 
 	int i, tokens, top_offset, invalid_offset;

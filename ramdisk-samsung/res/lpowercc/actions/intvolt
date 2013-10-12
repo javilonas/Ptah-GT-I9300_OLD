@@ -14,7 +14,7 @@ if [ -z $3 ]; then
 					break
 				fi
 			fi
-		done < /sys/devices/system/cpu/busfreq/int_volt_table
+		done < /sys/devices/system/cpu/busfreq/LP_int_volt_table
 	fi
 else
 	eval $STEP=$3
@@ -23,9 +23,9 @@ else
 		while read FREQ VOLT; do
 			S_FREQ=`echo $FREQ | cut -c 4-`
 			if [ $S_FREQ -eq $2 ]; then
-				echo $FREQ $3 > /sys/devices/system/cpu/busfreq/int_volt_table
+				echo $FREQ $3 > /sys/devices/system/cpu/busfreq/LP_int_volt_table
 			fi
-		done < /sys/devices/system/cpu/busfreq/int_volt_table
+		done < /sys/devices/system/cpu/busfreq/LP_int_volt_table
 	fi
 fi
 

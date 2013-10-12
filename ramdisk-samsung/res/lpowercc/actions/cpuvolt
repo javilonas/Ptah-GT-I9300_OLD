@@ -8,7 +8,7 @@ if [ -z $3 ]; then
 		while read FREQ UVOLT; do
 			eval "CPU_VOLT_$FREQ=$UVOLT"
 			echo "CPU_VOLT_$FREQ=$UVOLT" >> $DEFAULT_PROFILE
-		done < /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
+		done < /sys/devices/system/cpu/cpu0/cpufreq/LP_uV_table
 	fi
 else
 	eval $STEP=$3
@@ -18,9 +18,9 @@ else
 		while read FREQ UVOLT; do
 			evalcmd='eval echo \$CPU_VOLT_$FREQ'
 			VOLTAGES="$VOLTAGES `eval $evalcmd`"
-		done < /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
+		done < /sys/devices/system/cpu/cpu0/cpufreq/LP_uV_table
 
-		echo $VOLTAGES > /sys/devices/system/cpu/cpu0/cpufreq/UV_uV_table
+		echo $VOLTAGES > /sys/devices/system/cpu/cpu0/cpufreq/LP_uV_table
 	fi
 fi
 
