@@ -1,9 +1,9 @@
-Kernel Ptah 0.8 RTM1
+Kernel Ptah 0.9 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 11/10/2013
+Cambios realizados a día 12/10/2013
 
-Revertidos todos los cambios realizados en 0.6 y 0.7
-Revertidos los cambios realizados en Zram y Swap en 0.5
+uV Exclusivo y único desde LPowerCC (ya no es posible desde otra APP)
+Creadas nuevas versiones (Normal, Medio y Extremo)
 -------------------------------------------------- 
 
