@@ -1,6 +1,6 @@
 /*
  * Automatically generated C config: don't edit
- * Linux/arm 3.0.99 Kernel Configuration
+ * Linux/arm 3.0.100 Kernel Configuration
  */
 #define CONFIG_RING_BUFFER 1
 #define CONFIG_NF_CONNTRACK_H323 1
@@ -750,7 +750,7 @@
 #define CONFIG_GENERIC_ACL 1
 #define CONFIG_DEBUG_KERNEL 1
 #define CONFIG_COMPAT_BRK 1
-#define CONFIG_LOCALVERSION "-Ptah-0.9"
+#define CONFIG_LOCALVERSION "-Ptah-1.2"
 #define CONFIG_MACH_NO_WESTBRIDGE 1
 #define CONFIG_CRYPTO 1
 #define CONFIG_FUNCTION_TRACER 1
