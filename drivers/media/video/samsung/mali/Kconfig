@@ -35,7 +35,7 @@ endchoice
 config MALI_MEM_SIZE
 int "Dedicated Memory Size"
    depends on VIDEO_MALI400MP && (MALI_DED_ONLY || MALI_DED_MMU || MALI_DED_OSMEM)
-   default "128"
+   default "256"
    ---help---
        This value is dedicated memory size of Mali GPU(unit is MByte).
 	   
