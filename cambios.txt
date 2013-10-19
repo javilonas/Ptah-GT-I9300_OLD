@@ -1,9 +1,13 @@
-Kernel Ptah 0.9 RTM1
+Kernel Ptah 1.2 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 12/10/2013
+Cambios realizados a día 19/10/2013
 
-uV Exclusivo y único desde LPowerCC (ya no es posible desde otra APP)
-Creadas nuevas versiones (Normal, Medio y Extremo)
+Linux 3.0.100
+Reducir wakelocks
+Revert "CPU Mínimo a 100 MHz & CONFIG_HZ a 256"
+Revert "CPU a 1.5gHz & CONFIG_HZ a 250 por defecto"
+Aumentada la Memoria dedicada para la GPU
+GPU: Desactivado el seguimiento de estado
 -------------------------------------------------- 
 

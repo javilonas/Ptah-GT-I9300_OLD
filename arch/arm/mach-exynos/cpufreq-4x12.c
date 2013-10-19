@@ -320,7 +320,7 @@ static unsigned int exynos4x12_apll_pms_table[CPUFREQ_LEVEL_END] = {
 };
 
 /*
- * ASV group voltage table
+ * ASV group voltage table 
  */
 
 #define NO_ABB_LIMIT	L8
