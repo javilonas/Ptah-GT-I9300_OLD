@@ -92,7 +92,7 @@ static void update_timer_locked(struct alarm_queue *base, bool head_removed)
 
 	if (is_wakeup && suspended) {
 		pr_alarm(FLOW, "changed alarm while suspened\n");
-		wake_lock_timeout(&alarm_rtc_wake_lock, HZ / 4);
+		wake_lock_timeout(&alarm_rtc_wake_lock, 1 * HZ);
 		return;
 	}
 
@@ -466,7 +466,7 @@ static void alarm_triggered_func(void *p)
 	if (!(rtc->irq_data & RTC_AF))
 		return;
 	pr_alarm(INT, "rtc alarm triggered\n");
-	wake_lock_timeout(&alarm_rtc_wake_lock, HZ / 4);
+	wake_lock_timeout(&alarm_rtc_wake_lock, 1 * HZ);
 }
 
 static int alarm_suspend(struct platform_device *pdev, pm_message_t state)
@@ -529,7 +529,7 @@ static int alarm_suspend(struct platform_device *pdev, pm_message_t state)
 
 			spin_lock_irqsave(&alarm_slock, flags);
 			suspended = false;
-			wake_lock_timeout(&alarm_rtc_wake_lock, HZ / 2);
+			wake_lock_timeout(&alarm_rtc_wake_lock, 2 * HZ);
 			update_timer_locked(&alarms[ANDROID_ALARM_RTC_WAKEUP],
 									false);
 			update_timer_locked(&alarms[
