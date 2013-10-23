@@ -1,13 +1,15 @@
-Kernel Ptah 1.2 RTM1
+Kernel Ptah 1.3 RTM1
 
 ------------------------------------------------
-Cambios realizados a día 19/10/2013
+Cambios realizados a día 23/10/2013
 
-Linux 3.0.100
-Reducir wakelocks
-Revert "CPU Mínimo a 100 MHz & CONFIG_HZ a 256"
-Revert "CPU a 1.5gHz & CONFIG_HZ a 250 por defecto"
-Aumentada la Memoria dedicada para la GPU
-GPU: Desactivado el seguimiento de estado
+Linux 3.0.101
+Exynos: scaling_available_freqs
+Revert Reducir wakelocks (evitar congelamientos al cargar)
+sched: Create sched_select_non_idle_cpu() to give preferred CPU for power saving
+sched: don't call task_group() many times in set_task_rq()
+mm: dynamic page-writeback + Tweaks
+Modificados valores dirty_ratio y dirty_background_ratio
+Ajustada un poco mas la Memoria dedicada para la GPU
 -------------------------------------------------- 
 
